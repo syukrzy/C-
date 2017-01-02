@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<conio.h>
+#include<iostream.h>
+#include<iomanip.h>
+judul()
+{
+cout<<"\t\t PENGINAPAN A  "<<endl;
+}
+garis()
+{
+cout<<"==============================="<<endl;
+}
+struct
+{
+char komar[5];
+char natam[15],namar[15];
+int i;
+long jumbiy,diskon,ttl,totbiy,lama,hrg;
+}inap[5];
+main()
+{
+char lagi;
+long jumbiy,diskon,ttl,hrg,namar,natam;
+int i,badat;
+struct
+{
+char komar[5];
+char natam[15],namar[15];
+int hrg;
+long jumbiy,diskon,ttl,totbiy,lama;
+}inap[10];
+awal:
+clrscr();
+judul();
+garis();
+cout<<"Banyak data  :";cin>>badat;
+cout<<endl;
+for(i=1;i<=badat;i++)
+{
+cout<<"\t Data ke- "<<i<<endl;
+cout<<"\t Nama Tamu         :";gets(inap[i].natam);
+cout<<"\t Kode Kamar[M/A/S]  :";cin>>inap[i].komar;
+cout<<"\t Lama Inap          :";cin>>inap[i].lama;
+if(strcmpi(inap[i].komar,"M")==0||strcmpi(inap[i].komar,"m")==0)
+{
+strcpy(inap[i].namar,"Melati");
+inap[i].hrg=150000;
+}
+else
+if(strcmpi(inap[i].komar,"A")==0||strcmpi(inap[i].komar,"a")==0)
+{
+strcpy(inap[i].namar,"Anggrek");
+inap[i].hrg=200000;
+}
+else
+if(strcmpi(inap[i].komar,"S")==0||strcmpi(inap[i].komar,"s")==0)
+strcpy(inap[i].namar,"Semanggi");
+inap[i].hrg=250000;
+}
+clrscr();
+garis();
+judul();
+garis();
+cout<<"NO  Nama    Nama    Biaya   Lama  Biaya   Diskon  Total"<<endl;
+cout<<"    Tamu    Kamar   Kamar   Inap  Motel                "<<endl;
+garis();
+for(i=1;i<=badat;i++)
+{
+cout<<setiosflags(ios::left)<<setw(5)<<i;
+cout<<setiosflags(ios::left)<<setw(6)<<inap[i].natam;
+cout<<setiosflags(ios::left)<<setw(6)<<inap[i].namar;
+cout<<setiosflags(ios::left)<<setw(8)<<inap[i].hrg;
+cout<<setiosflags(ios::left)<<setw(5)<<inap[i].lama;
+inap[i].jumbiy=inap[i].hrg*inap[i].lama;
+cout<<setiosflags(ios::left)<<setw(8)<<inap[i].jumbiy;
+if(inap[i].lama>3)
+{
+inap[i].diskon=inap[i].jumbiy*0.10;
+}
+else
+{
+inap[i].diskon=0;
+}
+cout<<setiosflags(ios::left)<<setw(6)<<inap[i].diskon;
+inap[i].ttl=inap[i].jumbiy-inap[i].diskon;
+cout<<setiosflags(ios::left)<<setw(6)<<inap[i].ttl<<endl;
+cout<<endl<<endl;
+cout<<"\t Input Data Lagi[Y/T]?:";cin>>lagi;
+if(lagi=='Y'||lagi=='y')
+goto awal;
+getch();
+}
+}
+
